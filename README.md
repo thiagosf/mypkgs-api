@@ -82,6 +82,13 @@ API to [mypkgs.app](http://mypkgs.app) consume.
 * id (int)
 * name (string, unique)
 
+#### `framework_package_managers`
+
+* id (int)
+* framework_id (int)
+* name (string)
+* template_install (string) - Example: `npm install {{package_name}}`
+
 #### `topics`
 
 * id (int)
@@ -134,13 +141,12 @@ API to [mypkgs.app](http://mypkgs.app) consume.
 ## References
 
 * [Get a repository](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-a-repository)
-    Example: https://api.github.com/repos/thiagosf/skitter
+    * Example: https://api.github.com/repos/thiagosf/skitter
 * [Repository commits](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-commits)
-    Example: https://api.github.com/repos/thiagosf/skitter/commits?per_page=1
+    * Example: https://api.github.com/repos/thiagosf/skitter/commits?per_page=1
 * [Get all repository topics](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-all-repository-topics)
-    Example: 
-        ```bash
-        curl \
-          -H "Accept: application/vnd.github.mercy-preview+json" \
-          https://api.github.com/repos/thiagosf/skitter/topics 
-        ```
+    > ```bash
+    > curl \
+    > -H "Accept: application/vnd.github.mercy-preview+json" \
+    > https://api.github.com/repos/thiagosf/skitter/topics 
+    > ```
