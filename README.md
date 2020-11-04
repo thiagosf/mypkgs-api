@@ -2,9 +2,36 @@
 
 API to [mypkgs.app](http://mypkgs.app) consume.
 
+## Dev
+
+In the first time, you need install the dependencies first before up your containers. Why? For create `node_modules` in your host, this way your editor can use auto-complete. 
+
+When there are new dependencies, you need to do this steps too.
+
+```bash
+docker-compose run web yarn install
+docker-compose up
+```
+
+In the next times, just do it:
+
+```bash
+docker-compose up
+```
+
+## Test
+
+```bash
+docker-compose run web yarn test
+```
+
+## Production
+
+@todo
+
 ## Todo
 
-- [ ] Docker
+- [x] Docker
 - [ ] Tests
 - [ ] Rate limiter
 - [ ] Service update package

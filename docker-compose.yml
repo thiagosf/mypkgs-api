@@ -1,0 +1,66 @@
+version: "3"
+services:
+  web:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    image: mypkgs-api
+    container_name: mypkgs-api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/var/www
+    networks:
+      - mypkgs-api-network
+    depends_on:
+      - db
+      - db-test
+      - redis
+    links:
+      - db
+      - db-test
+      - redis
+
+  db:
+    image: postgres:9.6.19
+    container_name: mypkgs-api-postgres
+    volumes:
+      - ./postgres/:/var/lib/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - mypkgs-api-network
+    environment:
+      POSTGRES_ROOT_PASSWORD: root
+      POSTGRES_DB: my_db
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+
+  db-test:
+    image: postgres:9.6.19
+    container_name: mypkgs-api-postgres-test
+    volumes:
+      - /var/lib/postgres
+    ports:
+      - 5433:5432
+    networks:
+      - mypkgs-api-network
+    environment:
+      POSTGRES_ROOT_PASSWORD: root
+      POSTGRES_DB: my_test_db
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+
+  redis:
+    image: redis:5.0.5-alpine
+    container_name: mypkgs-api-redis
+    environment:
+      - DATABASE_REDIS_URL=redis://mypkgs-api-redis:6379
+    ports:
+      - 6379:6379
+    networks:
+      - mypkgs-api-network
+
+networks:
+  mypkgs-api-network:
+    driver: bridge
