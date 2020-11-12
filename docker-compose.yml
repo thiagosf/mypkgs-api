@@ -20,36 +20,38 @@ services:
       - db
       - db-test
       - redis
+    env_file:
+      - app/.env
 
   db:
-    image: postgres:9.6.19
-    container_name: mypkgs-api-postgres
+    image: mysql:5.7
+    container_name: mypkgs-api-mysql
     volumes:
-      - ./postgres/:/var/lib/postgres
+      - ./mysql/:/var/lib/mysql
     ports:
-      - 5432:5432
+      - 3306:3306
     networks:
       - mypkgs-api-network
     environment:
-      POSTGRES_ROOT_PASSWORD: root
-      POSTGRES_DB: my_db
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
 
   db-test:
-    image: postgres:9.6.19
-    container_name: mypkgs-api-postgres-test
+    image: mysql:5.7
+    container_name: mypkgs-api-mysql-test
     volumes:
-      - /var/lib/postgres
+      - /var/lib/mysql
     ports:
-      - 5433:5432
+      - 3307:3306
     networks:
       - mypkgs-api-network
     environment:
-      POSTGRES_ROOT_PASSWORD: root
-      POSTGRES_DB: my_test_db
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_test_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
 
   redis:
     image: redis:5.0.5-alpine

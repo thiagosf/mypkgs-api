@@ -94,7 +94,7 @@ docker-compose run web yarn test
 * avatar_url (string)
 * bio (string)
 * code_key (string, null, 6)
-* code_expires (int, null)
+* code_expires_at (int, null)
 * created_at (datetime)
 * updated_at (datetime)
 * deleted_at (datetime)
