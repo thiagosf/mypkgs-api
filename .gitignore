@@ -1,5 +1,9 @@
 app/node_modules
-app/dist
+app/dist/*
+!app/dist/.keep
 letsencrypt
 postgres
 app/.env
+app/public/files/*
+!app/public/files/.keep
+mysql

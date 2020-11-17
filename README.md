@@ -177,3 +177,4 @@ docker-compose run web yarn test
     > -H "Accept: application/vnd.github.mercy-preview+json" \
     > https://api.github.com/repos/thiagosf/skitter/topics 
     > ```
+* [ideal-nodejs-project-structure](https://softwareontheroad.com/ideal-nodejs-project-structure/)

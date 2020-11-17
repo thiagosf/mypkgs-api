@@ -1,5 +1,5 @@
 class TestHelpers {
-  async importFixtures (modelsOrAll: string | string[]) {}
+  async importFixtures (modelsOrAll: string | string[]): Promise<any> {}
 
   recNock () {}
 }
