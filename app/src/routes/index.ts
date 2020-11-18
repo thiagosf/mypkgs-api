@@ -1,11 +1,11 @@
 import { Router } from 'express'
+import { ModuleBootstrap } from '../types/modules.types'
 
-export default (app: any) => {
-  // @todo: load every route of modules
+export default async (app: any) => {
   const routes: Router = Router()
-  const mock = (req: any, res: any) => {
-    res.send({ message: 'hello' })
-  }
-  routes.get('/', mock)
+  const modules = await app.getModules()
+  modules.forEach((item: ModuleBootstrap) =>
+    item.installRoutes(routes)
+  )
   app.express.use('/', routes)
 }

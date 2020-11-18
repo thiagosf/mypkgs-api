@@ -24,6 +24,11 @@ elif [ "$1" == 'add' ]
   then
     docker-compose run web yarn add $2
 
+# add dev lib
+elif [ "$1" == 'adddev' ]
+  then
+    docker-compose run web yarn add -D $2
+
 # remove lib
 elif [ "$1" == 'remove' ]
   then
