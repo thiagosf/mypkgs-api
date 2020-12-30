@@ -177,4 +177,6 @@ docker-compose run web yarn test
     > -H "Accept: application/vnd.github.mercy-preview+json" \
     > https://api.github.com/repos/thiagosf/skitter/topics 
     > ```
+* [Get repository content](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-repository-content)
+  * Example: https://api.github.com/repos/thiagosf/skitter/contents/package.json
 * [ideal-nodejs-project-structure](https://softwareontheroad.com/ideal-nodejs-project-structure/)
