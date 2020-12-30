@@ -29,14 +29,6 @@ docker-compose run web yarn test
 
 @todo
 
-## Todo
-
-- [x] Docker
-- [ ] Tests
-- [ ] Rate limiter
-- [ ] Service update package
-- [ ] Service get `package-name` of packages
-
 ## Endpoints
 
 - [ ] GET /users/github/login
@@ -89,7 +81,7 @@ docker-compose run web yarn test
 * id (int)
 * github_id (string, unique)
 * github_url (string)
-* username (string, unique)
+* username (string, unique) - Only for github integration, if email account, use hash for username
 * email (string, unique)
 * avatar_url (string)
 * bio (string)
@@ -103,28 +95,32 @@ docker-compose run web yarn test
 
 * id (int)
 * name (string, unique)
+* name_slug (string, unique)
 
 #### `frameworks`
 
 * id (int)
 * name (string, unique)
+* name_slug (string, unique)
 
 #### `framework_package_managers`
 
 * id (int)
 * framework_id (int)
-* name (string)
+* name (string, unique)
+* name_slug (string, unique)
 * template_install (string) - Example: `npm install {{package_name}}`
 
 #### `topics`
 
 * id (int)
 * name (string, unique)
+* name_slug (string, unique)
 
 #### `packages`
 
 * id (int)
-* languge_id (int)
+* language_id (int)
 * url (string, unique)
 * repo_user_avatar_url (string)
 * repo_username (string)
@@ -152,6 +148,7 @@ docker-compose run web yarn test
 * id (int)
 * user_id (int)
 * package_id (int)
+* notes (string)
 
 #### `user_package_frameworks`
 
